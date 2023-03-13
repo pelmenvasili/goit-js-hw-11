@@ -1,0 +1,93 @@
+body {margin: 0px;
+  background-color: #207e25;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin: 0 auto;
+  background: linear-gradient(to bottom right, #3e8e41, #fff);
+}
+
+.photo-card {
+  border-radius: 5px;
+   overflow: hidden;
+}
+
+.photo-card img {
+  display: block;
+  width: 100%;
+  height: 341px; 
+  object-fit: cover;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  font-size: 14px;
+  color: #555;
+}
+
+.info-item {
+  margin: 0;
+  margin-right: 10px;
+}
+
+.load-more {
+  display: block;
+  margin: 30px auto;
+  padding: 10px 20px;
+  background-color: #4a4a4a;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.load-more:hover {
+  background-color: #555;
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+   padding: 10px;
+}
+
+input {
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  padding: 12px;
+  transition: border-color 0.3s ease-in-out;
+  margin-right: 10px;
+}
+
+input:focus {
+  outline: none;
+  border-color: #66afe9;
+}
+
+.search-form button[type="submit"] {
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.search-form button[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+
+.info {background-color: 
+  #cac28a;
+  text-align: center;
+}
