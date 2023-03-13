@@ -19,13 +19,14 @@ const lightbox = new SimpleLightbox('.gallery a', {
 
 let currentPage = 1;
 let currentHits = null;
-let searchQuery = '';
+
 
 async function fetchImages() {
-  searchQuery = inputRef.value.trim();
+ const searchQuery = inputRef.value.trim();
   if (searchQuery === '') { return };
-   const API_URL = `${BASE_URL}?key=${API_KEY}&q=${searchQuery}&image_type=photo&orientation=horizontal&safesearch=true&page=${currentPage}&per_page=${perPage}`;
-  return response = await axios.get(API_URL).then(response => response.data);
+  const API_URL = `${BASE_URL}?key=${API_KEY}&q=${searchQuery}&image_type=photo&orientation=horizontal&safesearch=true&page=${currentPage}&per_page=${perPage}`;
+ const response = await axios.get(API_URL);
+   return response.data;
 }
 
 async function onFormSubmit(event) {
@@ -42,8 +43,7 @@ async function onFormSubmit(event) {
       hideLoadMoreBtn()
     }
     if (response.totalHits > 0) {
-      showSuccessMessage();
-      clearGallery()
+      showSuccessMessage(response);
       renderImagesMarkup(response.hits);
       lightbox.refresh();
       const { height: cardHeight } = document
@@ -116,7 +116,7 @@ function showLoadMoreBtn() {
 
 hideLoadMoreBtn();
 
-function showSuccessMessage() {
+function showSuccessMessage(response) {
 Notiflix.Notify.success(`Hooray! We found ${response.totalHits} images.`);
 }
 
@@ -125,7 +125,7 @@ function showWarningMessage() {
 }
 
 function showFailureMessage() {
-   Notiflix.Notify.failure('Sorry, there are no images matching your search query. Please try again.');
+   Notiflix.Notify.failure("Sorry, there are no images matching your search query. Please try again.");
 }
 
 formRef.addEventListener('submit', onFormSubmit);
